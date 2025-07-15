@@ -20,6 +20,6 @@ A full-stack web application that allows users to write, submit, and execute cod
 | Database    | PostgreSQL         |
 | Code Engine | Judge0 API         |
 | ORM         | Prisma / Sequelize (mention whichever you used) |
-| Others      | JWT Auth, CORS, dotenv |
+| Others      | JWT Auth, CORS, dotenv
 
 
