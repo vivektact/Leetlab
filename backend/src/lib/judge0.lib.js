@@ -11,6 +11,16 @@ const getJudge0LanguageId = (language) => {
   return languageMap[language.toUpperCase()] || null
 }
 
+const getJudge0Language = (id) => {
+  const languageMap = {
+    71: "PYTHON",
+    62: "JAVA",
+    63: "JAVASCRIPT",
+    54: "C++"
+  }
+  return languageMap[id] || "Unknown Language"
+}
+
 // Submit a batch of testcases
 const submitBatch = async (submissions) => {
   const { data } = await axios.post(
@@ -79,4 +89,4 @@ const pollBatchResults = async (tokens) => {
   }
 }
 
-export { getJudge0LanguageId, submitBatch, pollBatchResults }
+export { getJudge0LanguageId, submitBatch, pollBatchResults, getJudge0Language }
