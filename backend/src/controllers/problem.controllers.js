@@ -168,4 +168,35 @@ const deleteProblem = asyncHandler(async (req, res) => {
   res.status(200).json(new ApiResponse(200, problem, "successfull deleted"))
 })
 
-export { createProblem, getAllProblems, getProblemById, deleteProblem }
+const getAllProblemsSolvedByUser = asyncHandler(async(req, res) => {
+ 
+
+    const problem = await db.Problem.findMany({
+      where:{
+        solvedBy:{
+          some:{
+            userId:req.user.id
+          }
+        }
+      },
+      include:{
+        solvedBy:{
+          where:{
+            userId:req.user.id
+          }
+        },
+      }
+    })
+
+  if(!problem){
+    return res.status(400).json(new ApiResponse(400, "", "No problem solved"));
+  }
+
+  console.log("Hello", problem);
+
+  return res.status(200).json(new ApiResponse(200, problem, "problem fetched successfully"));
+  
+})
+
+
+export { createProblem, getAllProblems, getProblemById, deleteProblem, getAllProblemsSolvedByUser }

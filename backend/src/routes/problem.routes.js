@@ -1,10 +1,12 @@
 import express from "express"
 import { authMiddleware, checkAdmin } from "../middlewares/auth.middlewares.js"
+
 import {
   createProblem,
   getAllProblems,
   getProblemById,
   deleteProblem,
+  getAllProblemsSolvedByUser
 } from "../controllers/problem.controllers.js"
 
 const problemRoutes = express.Router()
@@ -24,6 +26,7 @@ problemRoutes.delete(
   deleteProblem
 )
 
-// problemRoutes.get("/get-solved-problems" , authMiddleware , getAllProblemsSolvedByUser);
+problemRoutes.get("/get-solved-problems" , authMiddleware , getAllProblemsSolvedByUser);
+
 
 export default problemRoutes
